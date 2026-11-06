@@ -56,8 +56,11 @@ jobs:
           composer require "laravel/framework:${{ matrix.laravel }}" "orchestra/testbench:${{ matrix.testbench }}" --dev --no-interaction --no-update
           composer update --${{ matrix.stability }} --prefer-dist --no-interaction --no-progress
 
-      - name: Show versions
-        run: composer show laravel/framework orchestra/testbench pestphp/pest | grep -E '^(name|versions)'
+      - name: Installed versions
+        run: |
+          for package in laravel/framework orchestra/testbench pestphp/pest; do
+            composer show "$package" | grep -E '^(name|versions)'
+          done
 
       - name: Run tests
         run: vendor/bin/pest --ci
