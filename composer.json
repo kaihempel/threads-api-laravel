@@ -1,0 +1,59 @@
+{
+    "name": "kaihempel/threads-api-laravel",
+    "description": "Laravel client package for the Meta Threads API (OAuth, publishing, replies, insights).",
+    "type": "library",
+    "license": "MIT",
+    "keywords": ["laravel", "threads", "meta", "social-media", "api-client"],
+    "authors": [
+        {
+            "name": "Kai Hempel"
+        }
+    ],
+    "require": {
+        "php": "^8.3",
+        "illuminate/contracts": "^12.0|^13.0",
+        "illuminate/http": "^12.0|^13.0",
+        "illuminate/support": "^12.0|^13.0",
+        "illuminate/translation": "^12.0|^13.0"
+    },
+    "require-dev": {
+        "larastan/larastan": "^3.0",
+        "laravel/pint": "^1.20",
+        "orchestra/testbench": "^10.0|^11.0",
+        "pestphp/pest": "^3.8|^4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "KaiHempel\\Threads\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "KaiHempel\\Threads\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "pest",
+        "test-coverage": "pest --coverage --min=90",
+        "analyse": "phpstan analyse --memory-limit=1G",
+        "format": "pint"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "KaiHempel\\Threads\\ThreadsServiceProvider"
+            ],
+            "aliases": {
+                "Threads": "KaiHempel\\Threads\\Facades\\Threads"
+            }
+        }
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
